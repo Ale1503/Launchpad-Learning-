@@ -16,7 +16,7 @@ def run_game(game):
     print ("These are all social studies questions! Let's beging! ")
 
     g1_first = input ("What is the name of current president of Costa Rica? ->(Carlos Alvarado/Marito Mortadela/Jose Figueres) "
-    if g1_first == "Carlos Alvarado":
+    if g1_first == "Carlos Alvarado:
       print("Correct!")
       points = points+1
     else:
