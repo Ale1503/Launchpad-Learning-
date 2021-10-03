@@ -1,23 +1,54 @@
 #Pulpería
-list_of_products = {
-    'drinks': {"coke":5, "tropical":5, "pepsi":5, "cacique":3, "water":4},
-    'desserts': {"cookies&cream":1, "lemon pie":6, "torta chilena": 10, "vanilla ice cream": 5},
-    'cleaning': {"alcohol": 6, "clinex": 6, "cleaning wipes": 10, "gloves": 5}}  
-
+list_of_products = [
+  { 'Code': '1000', 'Name': 'Coke', 'Price': 5 },
+  { 'Code': '1001', 'Name': 'Tropical', 'Price': 5 },
+  { 'Code': '3001', 'Name': 'Alcohol', 'Price': 6 },
+  { 'Code': '3002', 'Name': 'Cacique', 'Price': 10}
+]
 #Choosing the products category
-def category_of_products():
-    product = input("What are you interested in buying? ")
-    for i in list_of_products:
-        if product == i: 
-            print ("Here are the options:", (list_of_products[i]))
-        
+def selection_of_products():
+    purchase_step = input("Write the initial: [S]earch Product, [E]nter product code, [P]ay ")
+    if purchase_step == 's':
+        search_for_name()
+    if purchase_step == 'e':
+        search_for_code()
+    if purchase_step == 'p':
+        total = sum(cart)
+        print ("Here is what you have to pay", total)
+#Shopping cart  
+cart = []
+#Search for name
+def search_for_name():
+    product_chosen = input("Choose the name of the product ")
+    for product in list_of_products:
+        if product_chosen == product['Name']:
+            print (product['Price'])
+            #cart.append(product['Price']), print("Item added")
+                    
+#Search for code                    
+def search_for_code():
+    product_chosen = input("Choose the code of the product ")
+    for product in list_of_products:
+        if product_chosen == product['Code']:
+            cart.append(product['Price']), print ("Item added")
+      
+
 #Facts about the customer
-print("Hello I hope you are doing good. Please let me get your information in oder to procceed with the purchase ")
+print("Hello I hope you are doing well. Please let me get your information in oder to procceed with the purchase ")
 customers_name = input("What is your name? ")
 payment_method = input("What is your payment method? (Debit/Cash)" )
 amount = int (input("How much money do you have? In dollars "))
 #Buying steps
-category_of_products()    
+selection_of_products()
 
+##    - Ask if the user wants to enter the product code or wants to search for a product. 
+##           [S]earch Product, [E]nter product code, [P]ay
+##      -> For Search Product: Enter a string and show the user all the products that match that string (Code, Name and price).
+##      -> For Enter product code: get the product code, look for the product with that code and add it to the shopping cart if it exists.
+##      -> After adding a new product, show the current shopping cart and total amount due.
+##      -> Ask again the first step. Repeat steps above if needed. If pay is chosen, check if the user can afford it (including taxes).
+##      -> Show an error if the amount of money is less than the required. Show a Thank you message if the amount of money is ok. Show to the user if there is any money left.
+
+##  OPTIONAL: be able to remove products from the shopping cart: [S]earch Product, [E]nter product code, [R]emove product from shopping cart or [P]ay.
 
 
